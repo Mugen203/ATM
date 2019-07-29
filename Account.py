@@ -10,7 +10,7 @@ def class SavingAccount(Account):
     def __init__(self, type, owner, accountNo):
         Account.__init__(self, type, owner)
 
-        def debit():
+        def debit(amount):
                 try:
                     if self.balance >= amount:
                         debit_Balance = self.balance - amount
@@ -23,7 +23,7 @@ def class SavingAccount(Account):
                     print("Insufficient funds!")
 
 
-        def credit():
+        def credit(amount):
             credit_Balance = self.balance + amount
             print("Your new balance is ", credit_Balance)
 
@@ -47,5 +47,3 @@ def class CheckingAccount(Account):
                 def credit():
                     credit_Balance = self.balance + amount
                     print("Your new balance is ", credit_Balance)
-
-        
