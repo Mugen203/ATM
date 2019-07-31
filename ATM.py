@@ -87,9 +87,11 @@ class ATM(object):
 		amount = self.validate_and_return_amount()
 		if amount == False:
 			self.atm_print("Transaction terminated")
+		else: 
+			debit(amount)
 			return
-		#amount is deducted from account
-		# 
+		#Amount is deducted from account
+		 
 		self.atm_print("Transaction successful.\nNew Balance : {}".format(str(2000))) #expecting the new balance from return
 	
 
@@ -99,8 +101,8 @@ class ATM(object):
 		if amount == False:
 			self.atm_print("Transaction terminated")
 			return
-		#amount is deducted from account
-		# 
+		#Amount is added to account
+		 
 		self.atm_print("Transaction successful.\nNew Balance : {}".format(str(2000))) #expecting the new balance from return
 
 	def enter_check_balance_option(self,account):
@@ -157,6 +159,23 @@ class ATM(object):
 		# say goodbye when no more transaction left
 		self.say_goodbye()
 
+#Class to hold account information for the bank.
+class account(object):
+    def __init__(self, type, owner,account_number,pin,balance):
+        self.type = type
+        self.owner = owner
+        self.account_number = account_number
+        self.pin = pin
+        self.balance = balance
+
+    def debit(self,amount):
+        deposit_balance = self.balance - amount
+        return deposit_balance
+        
+    def credit(self,amount):
+        credit_balance = self.balance + amount
+        return credit_balance
+    #End of the class.
 
 atm = ATM()
 atm.run_atm()
