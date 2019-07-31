@@ -1,5 +1,5 @@
 import datetime
-
+import Account
 class ATM(object):
 
 	def __init__(self):
@@ -88,7 +88,7 @@ class ATM(object):
 		if amount == False:
 			self.atm_print("Transaction terminated")
 		else: 
-			debit(amount)
+			from Account import debit
 			return
 		#Amount is deducted from account
 		 
@@ -160,22 +160,6 @@ class ATM(object):
 		self.say_goodbye()
 
 #Class to hold account information for the bank.
-class account(object):
-    def __init__(self, type, owner,account_number,pin,balance):
-        self.type = type
-        self.owner = owner
-        self.account_number = account_number
-        self.pin = pin
-        self.balance = balance
-
-    def debit(self,amount):
-        deposit_balance = self.balance - amount
-        return deposit_balance
-        
-    def credit(self,amount):
-        credit_balance = self.balance + amount
-        return credit_balance
-    #End of the class.
 
 atm = ATM()
 atm.run_atm()
