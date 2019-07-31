@@ -1,33 +1,38 @@
-def class Account(object):
-    def __init__(self, type, owner):
+#Account class to hold data on all the accounts created by the bank
+class Account(object):
+    def __init__(self, type, owner, balance, accountNo):
         self.type = type
         self.owner = owner
+        self.balance = balance
+        self.accountNo = accountNo
 
-    def checkBalance():
-        print("Here is your account balance ", self.balance)
+    #Returns data on the balance remaining in the bank account
+    def check_balance(self.balance):
+        return balance
 
-            def debit(amount):
-                    try:
-                        if self.balance >= amount:
-                            debit_Balance = self.balance - amount
-                                print("Transaction succesful!")
-                                print("Your new balance is ", debit_Balance)
+    #Debits the account
+    def debit(amount):
+        try:
+            if self.balance >= amount:
+                debit_Balance = self.balance - amount
+                return debit_Balance
 
-                        else:
-                            raise Error
-                    except Error:
-                        print("Insufficient funds!")
+            else:
+                raise Error
+
+        except Error:
+            print("Insufficient funds!")
+
+    #Credits the account
+    def credit(amount):
+        credit_Balance = self.balance + amount
+        print("Your new balance is ", credit_Balance)
 
 
-            def credit(amount):
-                credit_Balance = self.balance + amount
-                print("Your new balance is ", credit_Balance)
+class SavingAccount(Account):
+    def __init__(self, type, owner, balance, accountNo):
+        Account.__init__(self, type, owner, balance, accountNo)
 
-
-def class SavingAccount(Account):
-    def __init__(self, type, owner, accountNo):
-        Account.__init__(self, type, owner)
-
-def class CheckingAccount(Account):
-    def __init__(self, type, owner, accountNo):
+class CheckingAccount(Account):
+    def __init__(self, type, owner, balance, accountNo):
         Account.__init__(self, type, owner)
