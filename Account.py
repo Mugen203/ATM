@@ -7,8 +7,8 @@ class account(object):
         self.balance = balance
 
     def debit(self,amount):
-        deposit_balance = self.balance - amount
-        return deposit_balance
+        debit_balance = self.balance - amount
+        return debit_balance
 
     def credit(self,amount):
         credit_balance = self.balance + amount

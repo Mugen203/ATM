@@ -1,6 +1,23 @@
 import datetime
-import Account
-class ATM(object):
+
+class account(object):
+    def __init__(self,type,owner,account_number,pin,balance):
+        self.type = type
+        self.owner = owner
+        self.account_number = account_number
+        self.pin = pin
+        self.balance = balance
+
+    def debit(self,amount):
+        debit_balance = self.balance - amount
+        return debit_balance
+
+    def credit(self,amount):
+        credit_balance = self.balance + amount
+        return credit_balance
+    #End of the class.
+
+class ATM(account):
 
 	def __init__(self):
 		print('\nATM booted up successfully....\n')
@@ -87,12 +104,11 @@ class ATM(object):
 		amount = self.validate_and_return_amount()
 		if amount == False:
 			self.atm_print("Transaction terminated")
-		else: 
-			from Account import debit
-			return
+
+		self.debit(amount)
 		#Amount is deducted from account
 		 
-		self.atm_print("Transaction successful.\nNew Balance : {}".format(str(2000))) #expecting the new balance from return
+		self.atm_print("Transaction successful.\nNew Balance : " )
 	
 
 	def enter_deposit_option(self,account):
@@ -101,6 +117,7 @@ class ATM(object):
 		if amount == False:
 			self.atm_print("Transaction terminated")
 			return
+		self.credit(amount)
 		#Amount is added to account
 		 
 		self.atm_print("Transaction successful.\nNew Balance : {}".format(str(2000))) #expecting the new balance from return
