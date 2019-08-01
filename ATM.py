@@ -10,11 +10,11 @@ class account(object):
 
     def debit(self,amount):
         debit_balance = self.balance - amount
-        return debit_balance
+        return str(debit_balance)
 
     def credit(self,amount):
         credit_balance = self.balance + amount
-        return credit_balance
+        return str(credit_balance)
     #End of the class.
 
 class ATM(account):
@@ -105,10 +105,12 @@ class ATM(account):
 		if amount == False:
 			self.atm_print("Transaction terminated")
 
-		self.debit(amount)
+		else:
+			debit = self.debit(amount)
+			return debit
 		#Amount is deducted from account
 		 
-		self.atm_print("Transaction successful.\nNew Balance : " )
+		self.atm_print("Transaction successful.\nNew Balance : " + debit)
 	
 
 	def enter_deposit_option(self,account):
@@ -117,10 +119,12 @@ class ATM(account):
 		if amount == False:
 			self.atm_print("Transaction terminated")
 			return
-		self.credit(amount)
+		else:
+			credit = self.credit(amount)
+			return credit
 		#Amount is added to account
 		 
-		self.atm_print("Transaction successful.\nNew Balance : {}".format(str(2000))) #expecting the new balance from return
+		self.atm_print("Transaction successful.\nNew Balance : " + credit)
 
 	def enter_check_balance_option(self,account):
 		self.atm_print("Account balance is : GHC {}".format(24000))
